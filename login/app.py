@@ -16,8 +16,9 @@ login_manager.login_view = "login"
 login_manager.login_message_category = "info"
 
 db = SQLAlchemy()
-bcrypt = Bcrypt()
 migrate = Migrate()
+bcrypt = Bcrypt()
+
 
 def create_app():
     app = Flask(__name__)
@@ -27,7 +28,8 @@ def create_app():
 
     login_manager.init_app(app)
     db.init_app(app)
-    bcrypt.init_app(app)
     migrate.init_app(app,db)
+    bcrypt.init_app(app)
+    
     return app
 
